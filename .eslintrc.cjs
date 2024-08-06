@@ -8,6 +8,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
+    "plugin:storybook/recommended",
   ],
   overrides: [
     {
@@ -26,5 +27,8 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["@typescript-eslint", "react"],
-  rules: {},
+  rules: {
+    "react/react-in-jsx-scope": "off",
+  },
+  ignorePatterns: ["**/*.css", "**/*.css"],
 };
