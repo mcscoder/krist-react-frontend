@@ -20,7 +20,6 @@ export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
       }
       return "login";
     })();
-    console.log(src);
 
     return (
       <LocalImage

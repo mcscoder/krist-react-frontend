@@ -36,7 +36,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         <input
           type="checkbox"
           onChange={(e) => {
-            console.log(e.target.checked);
             onChange(e);
             setChecked(e.target.checked);
           }}

@@ -10,7 +10,6 @@ api.interceptors.response.use(
   (error) => {
     // Navigate to the login route when authentication failed
     if (error.response.headers.unauthorized) {
-      console.log(error.response.headers);
       window.location.href = "/auth";
     }
     return Promise.reject(error);
