@@ -9,6 +9,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:prettier/recommended",
     "plugin:storybook/recommended",
+    "plugin:tailwindcss/recommended",
   ],
   overrides: [
     {
