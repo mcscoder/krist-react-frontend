@@ -53,6 +53,7 @@ export const ResetPasswordForm = ({ token }: ResetPasswordFormProps) => {
         <>
           <Input
             label="New Password"
+            type="password"
             register={register("password")}
             error={formState.errors.password}
           />

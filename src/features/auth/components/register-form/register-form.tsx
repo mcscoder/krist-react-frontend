@@ -41,6 +41,7 @@ export const RegisterForm = () => {
           />
           <Input
             label="Password"
+            type="password"
             register={register("password")}
             error={formState.errors.password}
           />
