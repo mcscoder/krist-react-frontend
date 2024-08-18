@@ -1,8 +1,14 @@
+import { QueryClientProvider } from "@tanstack/react-query";
+import { ToastContainer } from "src/components/ui/toast";
+import { queryClient } from "src/lib/react-query";
+
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
-      <h1>AppProvider</h1>
-      {children}
-    </div>
+    <>
+      <QueryClientProvider client={queryClient}>
+        <ToastContainer />
+        {children}
+      </QueryClientProvider>
+    </>
   );
 };

@@ -1,3 +1,3 @@
-export const NotFound = () => {
+export const NotFoundRoute = () => {
   return <div>NotFound</div>;
 };

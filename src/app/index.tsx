@@ -2,7 +2,7 @@ import { AppProvider } from "src/app/app-provider";
 
 import { useMemo } from "react";
 import { RouterProvider } from "react-router-dom";
-import { createRouter } from "src/app/routes";
+import { createRouter } from "src/app/router";
 
 const AppRouter = () => {
   const router = useMemo(() => createRouter(), []);
@@ -12,7 +12,6 @@ const AppRouter = () => {
 function App() {
   return (
     <AppProvider>
-      <h1>App</h1>
       <AppRouter />
     </AppProvider>
   );
