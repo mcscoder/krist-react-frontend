@@ -1,6 +1,9 @@
+import { cva } from "class-variance-authority";
 import { FieldError } from "react-hook-form";
 import { Error } from "src/components/ui/form/error";
 import { Label } from "src/components/ui/form/label";
+
+export const fieldWrapperVariants = cva("relative");
 
 export type FieldWrapperProps = {
   className?: string;
@@ -21,12 +24,15 @@ export const FieldWrapper = ({
   error,
 }: FieldWrapperProps) => {
   return (
-    <div className={className}>
+    <div className={fieldWrapperVariants({ className })}>
       <Label>
         {label}
         <div className="mt-1">{children}</div>
       </Label>
-      <Error errorMessage={error?.message} />
+      <Error
+        className="absolute inset-x-0 top-full text-right"
+        errorMessage={error?.message}
+      />
     </div>
   );
 };

@@ -1,3 +1,3 @@
 export const HomeRoute = () => {
-  return <div>Home</div>;
+  return <div className="bg-yellow-500">Home</div>;
 };

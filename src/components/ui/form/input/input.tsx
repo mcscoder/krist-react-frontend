@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import { forwardRef } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import {
@@ -7,16 +7,28 @@ import {
 } from "src/components/ui/form/field-wrapper";
 
 const inputVariants = cva(
-  "w-full rounded-lg border border-primary/30 p-4 text-base focus-visible:outline-none focus-visible:ring-1"
+  "w-full rounded-lg border border-primary/30 p-4 text-base focus-visible:outline-none focus-visible:ring-1",
+  {
+    variants: {
+      variants: {
+        filled: "bg-white",
+        outlined: "bg-transparent",
+      },
+    },
+    defaultVariants: {
+      variants: "filled",
+    },
+  }
 );
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
-  FieldWrapperPassThroughProps & {
+  FieldWrapperPassThroughProps &
+  VariantProps<typeof inputVariants> & {
     register: Partial<UseFormRegisterReturn>;
   };
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { className, label, error, register, ...props }: InputProps,
+  { className, variants, label, error, register, ...props }: InputProps,
   ref
 ) {
   return (
@@ -25,7 +37,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       error={error}
     >
       <input
-        className={inputVariants({ className })}
+        className={inputVariants({ className, variants })}
         ref={ref}
         {...register}
         {...props}

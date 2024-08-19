@@ -4,7 +4,7 @@ import {
   LinkProps as RouterLinkProps,
 } from "react-router-dom";
 
-const linkVariants = cva("text-sm text-primary hover:text-primary/70");
+const linkVariants = cva("hover:opacity-70");
 
 export type LinkProps = RouterLinkProps & VariantProps<typeof linkVariants>;
 
