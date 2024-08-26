@@ -1,0 +1,47 @@
+import { LocalIcon } from "src/assets/icons";
+import { Button } from "src/components/ui/button";
+import { Link } from "src/components/ui/link";
+import { Product } from "src/types";
+import { cn } from "src/utils/cn";
+import { formatUSD } from "src/utils/money";
+
+export type ProductCardProps = {
+  product: Product;
+  className?: string;
+};
+
+export const ProductCard = ({ product, className }: ProductCardProps) => {
+  return (
+    <Link
+      to={""}
+      className={cn("flex-col gap-5 hover:opacity-90", className)}
+    >
+      <div className="group relative w-full max-w-72 bg-gray-100 px-5 py-10">
+        <img
+          className="size-full object-cover object-center"
+          src={product.images[0].src}
+          alt={product.title}
+        />
+        <Button
+          variant={"ghost"}
+          size={"icon"}
+          startIcon={<LocalIcon iconName="StarOutlined" />}
+          className="absolute right-3 top-3 hidden rounded-full bg-white hover:bg-gray-300/90 hover:shadow-md group-hover:inline-flex"
+        />
+        <Button
+          size={"lg"}
+          className="absolute bottom-4 left-1/2 hidden w-4/5 -translate-x-1/2 bg-white text-black hover:bg-gray-300/90 hover:shadow-md group-hover:inline-flex"
+        >
+          Add to Cart
+        </Button>
+      </div>
+      <div className="flex flex-col gap-1">
+        <h3 className="font-bold">{product.title}</h3>
+        <h3>{product.name}</h3>
+        <div>
+          <p>{formatUSD(product.productVariants[0].price)}</p>
+        </div>
+      </div>
+    </Link>
+  );
+};
