@@ -5,7 +5,7 @@ import { CategoryGroups } from "src/features/header/components/category-groups";
 
 export const AppHeader = () => {
   return (
-    <header className="container my-6 flex items-center justify-between">
+    <header className="content-container container my-6 flex items-center justify-between">
       <LocalIcon
         iconName="KristLogo"
         width={"auto"}
@@ -26,10 +26,8 @@ export const AppHeader = () => {
           >
             Shop
           </NavLink>
-          <div className="absolute left-1/2 top-full hidden w-max -translate-x-1/2 group-hover:block">
-            <div className="mt-3 grid grid-cols-4 gap-x-28 gap-y-10 bg-white p-10 shadow-md ring-1 ring-black/5">
-              <CategoryGroups />
-            </div>
+          <div className="absolute left-1/2 top-full z-50 hidden w-max -translate-x-1/2 group-hover:block">
+            <CategoryGroups />
           </div>
         </div>
         <NavLink to={"/home"}>Our Story</NavLink>

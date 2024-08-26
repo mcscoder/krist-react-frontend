@@ -14,4 +14,8 @@
   .container {
     @apply min-[1440px]:max-w-[1440px] mx-auto;
   }
+
+  .content-container {
+    @apply px-24;
+  }
 }

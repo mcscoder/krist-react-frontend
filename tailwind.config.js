@@ -12,6 +12,12 @@ export default {
       colors: {
         primary: colors.black,
       },
+      fontSize: {
+        h1: "56px",
+        h2: "42px",
+        h3: "28px",
+        h4: "21px",
+      },
     },
   },
   plugins: [],

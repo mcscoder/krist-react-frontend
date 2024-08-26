@@ -1,17 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "src/lib/api-client";
-
-export type CategoryGroups = {
-  id: number;
-  name: string;
-  categories: {
-    id: number;
-    name: string;
-  }[];
-}[];
+import { CategoryGroupWithCategories } from "src/types";
 
 const getCategoryGroups = () => {
-  return api.get<CategoryGroups>("/public/category-groups");
+  return api.get<CategoryGroupWithCategories[]>("/public/category-groups");
 };
 
 export const useCategoryGroups = () => {

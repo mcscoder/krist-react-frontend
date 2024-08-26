@@ -5,3 +5,8 @@ export type ResponseMessage = {
 export type Token = {
   token: string;
 };
+
+export type Image = {
+  id: number;
+  src: string;
+};

@@ -23,6 +23,12 @@ import Paypal from "./paypal.svg?react";
 import Search from "./search.svg?react";
 import Twitter from "./twitter.svg?react";
 import Visa from "./visa.svg?react";
+import Box from "./box.svg?react";
+import Dollar from "./dollar.svg?react";
+import Headphone from "./headphone.svg?react";
+import Payment from "./payment.svg?react";
+import StarFilled from "./star-filled.svg?react";
+import StarOutlined from "./star-outlined.svg?react";
 
 import React from "react";
 
@@ -52,6 +58,12 @@ const icon = {
   Search,
   Twitter,
   Visa,
+  Box,
+  Dollar,
+  Headphone,
+  Payment,
+  StarFilled,
+  StarOutlined,
 } satisfies Record<
   string,
   React.FunctionComponent<React.SVGProps<SVGSVGElement>>
