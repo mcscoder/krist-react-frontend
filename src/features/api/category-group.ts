@@ -12,3 +12,18 @@ export const useCategoryGroups = () => {
     queryFn: getCategoryGroups,
   });
 };
+
+const getCategoryGroup = (categoryGroupId: number) => {
+  return api.get<CategoryGroupWithCategories>(
+    `/public/category-group/${categoryGroupId}`
+  );
+};
+
+export const useCategoryGroup = (categoryGroupId: number) => {
+  return useQuery({
+    queryKey: ["getCategoryGroup", categoryGroupId],
+    queryFn: () => {
+      return getCategoryGroup(categoryGroupId);
+    },
+  });
+};

@@ -1,7 +1,7 @@
 import React from "react";
 import { CategoryCard } from "src/components/ui/card/category-card";
 import { CarouselWithTitle } from "src/components/ui/carousel/carousel-with-title";
-import { useCategoryGroups } from "src/features/api/category-groups";
+import { useCategoryGroups } from "src/features/api/category-group";
 import "swiper/css";
 import "swiper/css/navigation";
 
