@@ -1,26 +1,29 @@
 import { LocalIcon } from "src/assets/icons";
 import { Button } from "src/components/ui/button";
 import { Link } from "src/components/ui/link";
-import { Product } from "src/types";
+import { ProductOverview } from "src/types";
 import { cn } from "src/utils/cn";
 import { formatUSD } from "src/utils/money";
 
 export type ProductCardProps = {
-  product: Product;
+  productOverview: ProductOverview;
   className?: string;
 };
 
-export const ProductCard = ({ product, className }: ProductCardProps) => {
+export const ProductCard = ({
+  productOverview,
+  className,
+}: ProductCardProps) => {
   return (
     <Link
       to={""}
       className={cn("flex-col gap-5 hover:opacity-90", className)}
     >
-      <div className="group relative w-full max-w-72 bg-gray-100 px-5 py-10">
+      <div className="group relative w-full bg-gray-100 px-5 py-10">
         <img
           className="size-full object-cover object-center"
-          src={product.images[0].src}
-          alt={product.title}
+          src={productOverview.image}
+          alt={productOverview.title}
         />
         <Button
           variant={"ghost"}
@@ -36,10 +39,10 @@ export const ProductCard = ({ product, className }: ProductCardProps) => {
         </Button>
       </div>
       <div className="flex flex-col gap-1">
-        <h3 className="font-bold">{product.title}</h3>
-        <h3>{product.name}</h3>
+        <h3 className="font-bold">{productOverview.title}</h3>
+        <h3>{productOverview.name}</h3>
         <div>
-          <p>{formatUSD(product.productVariants[0].price)}</p>
+          <p>{formatUSD(productOverview.lowestPrice)}</p>
         </div>
       </div>
     </Link>

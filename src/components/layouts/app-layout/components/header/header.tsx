@@ -12,10 +12,10 @@ export const AppHeader = () => {
         height={"auto"}
       />
       <nav className="flex items-center justify-center gap-8">
-        <NavLink to={"/home"}>Home</NavLink>
+        <NavLink to={"/"}>Home</NavLink>
         <div className="group relative">
           <NavLink
-            to={"/home"}
+            to={"/"}
             endIcon={
               <LocalIcon
                 iconName="ChevronDown"
@@ -30,9 +30,9 @@ export const AppHeader = () => {
             <CategoryGroups />
           </div>
         </div>
-        <NavLink to={"/home"}>Our Story</NavLink>
-        <NavLink to={"/home"}>Blog</NavLink>
-        <NavLink to={"/home"}>Contact Us</NavLink>
+        <NavLink to={"/"}>Our Story</NavLink>
+        <NavLink to={"/"}>Blog</NavLink>
+        <NavLink to={"/"}>Contact Us</NavLink>
       </nav>
       <div className="flex items-center justify-center gap-1">
         <Button

@@ -1,5 +1,5 @@
-import { ProductCard } from "src/components/ui/card";
-import { useBestSellers } from "src/features/api/best-sellers";
+import { ProductGridLayout } from "src/components/layouts/product-grid-layout";
+import { useBestSellers } from "src/features/api/product";
 
 export const BestSellers = () => {
   const { isLoading, data } = useBestSellers();
@@ -13,20 +13,7 @@ export const BestSellers = () => {
       <div className="flex justify-center">
         <h3 className="text-h3">Our Best Sellers</h3>
       </div>
-      <div className="grid grid-cols-4 gap-8">
-        {data?.data.map((product, index) => (
-          <ProductCard
-            key={index}
-            product={product}
-          />
-        ))}
-        {data?.data.map((product, index) => (
-          <ProductCard
-            key={index}
-            product={product}
-          />
-        ))}
-      </div>
+      <ProductGridLayout productOverviewList={data!.data} />
     </div>
   );
 };

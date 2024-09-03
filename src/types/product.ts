@@ -58,3 +58,23 @@ export type Product = {
   categories: Category[];
   productVariants: ProductVariant[];
 };
+
+///////////////////////////////////////////////////////////////////////////////
+
+export type ProductOverview = {
+  id: number;
+  name: string;
+  title: string;
+  description: string;
+  sold: number;
+  image: string;
+  lowestPrice: number;
+};
+
+export type ProductOverviewList = {
+  productOverviews: ProductOverview[];
+  maxPageNumber: number;
+  pageNumber: number;
+  pageSize: number;
+  numberOfItems: number;
+};

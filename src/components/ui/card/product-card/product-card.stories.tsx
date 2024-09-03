@@ -11,7 +11,7 @@ type Story = StoryObj<typeof ProductCard>;
 
 export const Default: Story = {
   args: {
-    product: {
+    productOverview: {
       id: 0,
       title: "US Polo",
       name: "Tailorded Cotton Casual Shirt",
