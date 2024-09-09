@@ -3,7 +3,7 @@ import { Image } from "src/types/common";
 export type CategoryGroup = {
   id: number;
   name: string;
-  image: Image;
+  image: string;
 };
 
 export type Category = {
@@ -13,10 +13,6 @@ export type Category = {
 
 export type CategoryGroupWithCategories = CategoryGroup & {
   categories: Category[];
-};
-
-export type CategoryWithCategoryGroup = Category & {
-  categoryGroup: CategoryGroup;
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -31,12 +27,9 @@ export type AttributeValue = {
   name: string;
 };
 
-export type AttributeWithAttributeValues = Attribute & {
-  attributeValues: AttributeValue[];
-};
-
-export type AttributeValueWithAttribute = AttributeValue & {
+export type AttributeWithAttributeValues = {
   attribute: Attribute;
+  attributeValues: AttributeValue[];
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -45,8 +38,9 @@ export type ProductVariant = {
   id: number;
   price: number;
   quantity: number;
-  attributeValues: AttributeValueWithAttribute[];
 };
+
+///////////////////////////////////////////////////////////////////////////////
 
 export type Product = {
   id: number;
@@ -55,8 +49,13 @@ export type Product = {
   description: string;
   sold: number;
   images: Image[];
-  categories: Category[];
-  productVariants: ProductVariant[];
+};
+
+export type ProductDetails = {
+  product: Product;
+  categoryGroup: CategoryGroup;
+  category: Category;
+  attributes: AttributeWithAttributeValues[];
 };
 
 ///////////////////////////////////////////////////////////////////////////////

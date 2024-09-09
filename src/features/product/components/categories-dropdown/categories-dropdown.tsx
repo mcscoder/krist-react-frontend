@@ -1,20 +1,27 @@
 import { CheckboxDropdown } from "src/components/ui/dropdown";
 import { QUERY_KEY } from "src/constants";
+import { useCategoriesByCategoryGroup } from "src/features/api/category";
 import { useSearchParamsFilter } from "src/hooks/search-params-filter";
-import { Category } from "src/types";
 
 export type CategoriesDropdownProps = {
-  categories: Category[];
+  categoryGroupId: number;
   className?: string;
 };
 
 export const CategoriesDropdown = ({
-  categories,
+  categoryGroupId,
   className,
 }: CategoriesDropdownProps) => {
   const { params, addValues, deleteValues } = useSearchParamsFilter(
     QUERY_KEY.CATEGORIES
   );
+
+  const { isLoading, data: categories } =
+    useCategoriesByCategoryGroup(categoryGroupId);
+
+  if (isLoading) {
+    return <>Loading...</>;
+  }
 
   return (
     <CheckboxDropdown
@@ -22,7 +29,7 @@ export const CategoriesDropdown = ({
         title: "Product Categories",
         className: className,
       }}
-      checkboxes={categories.map((category) => ({
+      checkboxes={categories!.data.map((category) => ({
         checked: params.includes(`${category.id}`),
         onChange: (checked) => {
           const categoryId = `${category.id}`;

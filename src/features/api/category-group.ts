@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "src/lib/api-client";
-import { CategoryGroupWithCategories } from "src/types";
+import { CategoryGroup } from "src/types";
 
-const getCategoryGroups = () => {
-  return api.get<CategoryGroupWithCategories[]>("/public/category-groups");
+const getCategoryGroups = async () => {
+  return (await api.get<CategoryGroup[]>("/public/category-groups")).data;
 };
 
 export const useCategoryGroups = () => {
@@ -14,9 +14,7 @@ export const useCategoryGroups = () => {
 };
 
 const getCategoryGroup = (categoryGroupId: number) => {
-  return api.get<CategoryGroupWithCategories>(
-    `/public/category-group/${categoryGroupId}`
-  );
+  return api.get<CategoryGroup>(`/public/category-group/${categoryGroupId}`);
 };
 
 export const useCategoryGroup = (categoryGroupId: number) => {

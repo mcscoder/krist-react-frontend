@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 export const Categories = () => {
-  const { isLoading, data } = useCategoryGroups();
+  const { isLoading, data: categoryGroups } = useCategoryGroups();
 
   if (isLoading) {
     return <>Loading...</>;
@@ -14,7 +14,7 @@ export const Categories = () => {
 
   return (
     <CarouselWithTitle title="Shop by Categories">
-      {data!.data.map(
+      {categoryGroups!.map(
         (categoryGroup, index): React.ReactNode => (
           <CategoryCard
             key={index}

@@ -16,7 +16,7 @@ export const ProductCard = ({
 }: ProductCardProps) => {
   return (
     <Link
-      to={""}
+      to={`/product-details/${productOverview.id}`}
       className={cn("flex-col gap-5 hover:opacity-90", className)}
     >
       <div className="group relative w-full bg-gray-100 px-5 py-10">

@@ -1,7 +1,7 @@
 import { LocalIcon } from "src/assets/icons";
 import { Button } from "src/components/ui/button";
 import { NavLink } from "src/components/ui/nav-link";
-import { CategoryGroups } from "src/features/header/components/category-groups";
+import { HeaderCategoryGroups } from "src/features/header/components/header-category-groups/header-category-groups";
 
 export const AppHeader = () => {
   return (
@@ -27,7 +27,7 @@ export const AppHeader = () => {
             Shop
           </NavLink>
           <div className="absolute left-1/2 top-full z-50 hidden w-max -translate-x-1/2 group-hover:block">
-            <CategoryGroups />
+            <HeaderCategoryGroups />
           </div>
         </div>
         <NavLink to={"/"}>Our Story</NavLink>

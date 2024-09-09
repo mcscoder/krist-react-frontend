@@ -50,7 +50,7 @@ export const ProductByCategoryGroup = ({
         <ProductSortingMenu />
       </div>
       <ProductGridLayout
-        productOverviewList={productOverviewList!.data}
+        productOverviews={productOverviewList!.data.productOverviews}
         className={"grid-cols-3"}
       />
       <div className="flex justify-end">

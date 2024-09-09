@@ -20,7 +20,7 @@ export const CategoryCard = ({
       )}
     >
       <img
-        src={categoryGroup.image.src}
+        src={categoryGroup.image}
         alt={categoryGroup.name}
         className="size-full object-cover object-center"
       />

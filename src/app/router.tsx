@@ -35,6 +35,15 @@ export const createRouter = () =>
               },
             },
             {
+              path: "product-details/:productId",
+              lazy: async () => {
+                const { ProductDetailsRoute } = await import(
+                  "src/app/routes/app/public/product-details"
+                );
+                return { Component: ProductDetailsRoute };
+              },
+            },
+            {
               path: "",
               lazy: async () => {
                 const { ProtectedRoute } = await import("src/lib/auth");

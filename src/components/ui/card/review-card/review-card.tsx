@@ -1,4 +1,4 @@
-import { LocalIcon } from "src/assets/icons";
+import { ReviewStar } from "src/components/ui/review-star/review-star";
 import { UserAvatar } from "src/components/ui/user/user-avatar";
 
 export type ReviewCardProps = {
@@ -16,13 +16,7 @@ export const ReviewCard = ({
 }: ReviewCardProps) => {
   return (
     <div className="flex max-w-96 flex-col gap-y-4 rounded-2xl p-7 shadow-lg ring-1 ring-black/5">
-      <div className="flex gap-x-1 text-yellow-500">
-        <LocalIcon iconName="StarFilled" />
-        <LocalIcon iconName="StarFilled" />
-        <LocalIcon iconName="StarFilled" />
-        <LocalIcon iconName="StarFilled" />
-        <LocalIcon iconName="StarFilled" />
-      </div>
+      <ReviewStar stars={5} />
       <p>{comment}</p>
       <div className="mt-3 flex gap-x-3">
         <UserAvatar src={imgSrc} />

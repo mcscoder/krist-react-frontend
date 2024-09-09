@@ -29,6 +29,8 @@ import Headphone from "./headphone.svg?react";
 import Payment from "./payment.svg?react";
 import StarFilled from "./star-filled.svg?react";
 import StarOutlined from "./star-outlined.svg?react";
+import Plus from "./plus.svg?react";
+import Minus from "./minus.svg?react";
 
 import React from "react";
 
@@ -64,6 +66,8 @@ const icon = {
   Payment,
   StarFilled,
   StarOutlined,
+  Plus,
+  Minus,
 } satisfies Record<
   string,
   React.FunctionComponent<React.SVGProps<SVGSVGElement>>

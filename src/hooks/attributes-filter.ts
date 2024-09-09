@@ -22,12 +22,22 @@ export const useAttributesFilter = () => {
 
   useEffect(() => {
     setParams(getValueAsObject());
-  }, [searchParams]);
+  }, [searchParams.toString()]);
 
   const parseObjectToString = (object: { [key: string]: string[] }) => {
     const raw: string[] = [];
     Object.keys(object).forEach((attributeId) => {
       raw.push([attributeId, object[attributeId].join(",")].join("-"));
+    });
+    return raw.join("_");
+  };
+
+  const parseObjectWithSingleValueToString = (object: {
+    [key: string]: string;
+  }) => {
+    const raw: string[] = [];
+    Object.keys(object).forEach((attributeId) => {
+      raw.push([attributeId, object[attributeId]].join("-"));
     });
     return raw.join("_");
   };
@@ -39,6 +49,14 @@ export const useAttributesFilter = () => {
       }
       params[attributeId].push(...attributeValueIds);
 
+      prev.set(key, parseObjectToString(params));
+      return prev;
+    });
+  };
+
+  const setValues = (attributeId: string, ...attributeValueIds: string[]) => {
+    setSearchParams((prev) => {
+      params[attributeId] = attributeValueIds;
       prev.set(key, parseObjectToString(params));
       return prev;
     });
@@ -69,5 +87,13 @@ export const useAttributesFilter = () => {
     });
   };
 
-  return { params, addValues, deleteValues };
+  return {
+    params,
+    getValueAsObject,
+    addValues,
+    setValues,
+    deleteValues,
+    parseObjectToString,
+    parseObjectWithSingleValueToString,
+  };
 };

@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useBreadcrumb } from "src/components/ui/breadcrumb/useBreadcrumb";
-import { PageBottom } from "src/components/ui/page-bottom";
 import { useCategoryGroup } from "src/features/api/category-group";
 import { AttributeFilters } from "src/features/product/components/attribute-filters/attribute-filters";
 import { CategoriesDropdown } from "src/features/product/components/categories-dropdown";
@@ -27,6 +26,10 @@ export const AllProductsRoute = () => {
         children: categoryGroup?.data.name,
       },
     ]);
+
+    return () => {
+      setComponents([]);
+    };
   }, [categoryGroup?.data.name]);
 
   if (isCategoryGroupLoading) {
@@ -34,21 +37,21 @@ export const AllProductsRoute = () => {
   }
 
   return (
-    <div id={elementId}>
-      <div className="content-container container flex gap-x-12">
-        <div className="flex flex-col gap-y-10">
-          <CategoriesDropdown
-            categories={categoryGroup!.data.categories}
-            className="w-max"
-          />
-          <AttributeFilters />
-        </div>
-        <ProductByCategoryGroup
-          categoryGroupId={Number(categoryGroupId)}
-          className="flex-1"
+    <div
+      id={elementId}
+      className="content-container container flex gap-x-12"
+    >
+      <div className="flex flex-col gap-y-10">
+        <CategoriesDropdown
+          categoryGroupId={categoryGroup!.data.id}
+          className="w-max"
         />
+        <AttributeFilters categoryGroupId={Number(categoryGroupId)} />
       </div>
-      <PageBottom />
+      <ProductByCategoryGroup
+        categoryGroupId={Number(categoryGroupId)}
+        className="flex-1"
+      />
     </div>
   );
 };
