@@ -2,19 +2,27 @@ import { useQuery } from "@tanstack/react-query";
 import { api } from "src/lib/api-client";
 import { ProductVariant } from "src/types";
 
-const getProductVariant = async (attributes: string) => {
+export type GetProductVariantProps = {
+  productId: number;
+  attributes: string;
+};
+
+const getProductVariant = async ({
+  productId,
+  attributes,
+}: GetProductVariantProps) => {
   return (
     await api.get<ProductVariant>(
-      `/public/product-variant/attributes/5/${attributes}`
+      `/public/product-variant/attributes/${productId}/${attributes}`
     )
   ).data;
 };
 
-export const useProductVariant = (attributes: string) => {
+export const useProductVariant = (props: GetProductVariantProps) => {
   return useQuery({
-    queryKey: ["getProductVariant", attributes],
+    queryKey: ["getProductVariant", props],
     queryFn: () => {
-      return getProductVariant(attributes);
+      return getProductVariant(props);
     },
   });
 };

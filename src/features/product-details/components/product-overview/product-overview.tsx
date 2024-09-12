@@ -42,11 +42,12 @@ export const ProductOverview = ({
   });
   const [count, setCount] = useState<number>(1);
 
-  const { isLoading, data: productVariant } = useProductVariant(
-    parseObjectWithSingleValueToString(
+  const { isLoading, data: productVariant } = useProductVariant({
+    productId: productDetails.product.id,
+    attributes: parseObjectWithSingleValueToString(
       currentAttributes as unknown as { [key: string]: string }
-    )
-  );
+    ),
+  });
 
   if (isLoading) {
     return <>Loading...</>;
