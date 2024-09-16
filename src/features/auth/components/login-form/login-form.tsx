@@ -31,10 +31,7 @@ export const LoginForm = () => {
             error={formState.errors.password}
           />
           <div className="flex items-center justify-between">
-            <label className="flex items-center gap-2">
-              <Checkbox />
-              Remember Me
-            </label>
+            <Checkbox>Remember Me</Checkbox>
             <Link to={"/auth/forgot-password"}>Forgot Password?</Link>
           </div>
           <Button

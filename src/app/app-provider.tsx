@@ -4,11 +4,9 @@ import { queryClient } from "src/lib/react-query";
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   return (
-    <>
-      <QueryClientProvider client={queryClient}>
-        <ToastContainer />
-        {children}
-      </QueryClientProvider>
-    </>
+    <QueryClientProvider client={queryClient}>
+      <ToastContainer />
+      {children}
+    </QueryClientProvider>
   );
 };

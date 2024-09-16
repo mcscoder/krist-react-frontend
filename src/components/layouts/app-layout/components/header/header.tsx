@@ -1,9 +1,15 @@
 import { LocalIcon } from "src/assets/icons";
 import { Button } from "src/components/ui/button";
+import { Link } from "src/components/ui/link";
 import { NavLink } from "src/components/ui/nav-link";
-import { HeaderCategoryGroups } from "src/features/header/components/header-category-groups/header-category-groups";
+import { UserAvatar } from "src/components/ui/user/user-avatar";
+import { HeaderAccountOptions } from "src/features/header/components/header-account-options";
+import { HeaderCategoryGroups } from "src/features/header/components/header-category-groups";
+import { useUser } from "src/lib/auth";
 
 export const AppHeader = () => {
+  const { data: user } = useUser();
+
   return (
     <header className="content-container container my-6 flex items-center justify-between">
       <LocalIcon
@@ -34,7 +40,7 @@ export const AppHeader = () => {
         <NavLink to={"/"}>Blog</NavLink>
         <NavLink to={"/"}>Contact Us</NavLink>
       </nav>
-      <div className="flex items-center justify-center gap-1">
+      <div className="flex items-center justify-center gap-x-3">
         <Button
           variant={"ghost"}
           size={"icon"}
@@ -50,7 +56,18 @@ export const AppHeader = () => {
           size={"icon"}
           startIcon={<LocalIcon iconName="Bag" />}
         />
-        <Button className="ml-4">Login</Button>
+        {user ? (
+          <div className="group relative">
+            <Link to={"/profile"}>{<UserAvatar src={user.image.src} />}</Link>
+            <div className="absolute left-1/2 top-full z-50 hidden w-max -translate-x-1/2 pt-3 group-hover:block">
+              <HeaderAccountOptions />
+            </div>
+          </div>
+        ) : (
+          <Link to={"/auth"}>
+            <Button className="ml-4">Login</Button>
+          </Link>
+        )}
       </div>
     </header>
   );

@@ -1,44 +1,26 @@
 import { useQuery } from "@tanstack/react-query";
 import { Navigate, Outlet } from "react-router-dom";
+import { LoadingScreen } from "src/components/ui/loading";
 import { api } from "src/lib/api-client";
-import { User } from "src/types";
-import { create } from "zustand";
+import { UserOverview } from "src/types";
 
-const getUser = () => {
-  return api.get<User>("/users/profile");
+const getUser = async () => {
+  return (await api.get<UserOverview>("/users/profile")).data;
 };
-
-type AuthState = {
-  user: User | undefined;
-  login: (user: User) => void;
-  logout: () => void;
-};
-
-export const useAuthStore = create<AuthState>((set) => ({
-  user: undefined,
-  login: (user) => set({ user }),
-  logout: () => set({ user: undefined }),
-}));
 
 export const useUser = () => {
-  const authStore = useAuthStore();
-
   return useQuery({
     queryKey: ["userData"],
-    queryFn: async () => {
-      const user = await getUser();
-      authStore.login(user.data);
-      return user;
-    },
+    queryFn: getUser,
+    retry: false,
   });
 };
 
 export const ProtectedRoute = () => {
-  const { isLoading } = useUser();
-  const { user } = useAuthStore();
+  const { isLoading, data: user } = useUser();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingScreen />;
   }
 
   // Navigate to login route when authentication failed

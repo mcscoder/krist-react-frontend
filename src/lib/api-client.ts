@@ -8,10 +8,10 @@ export const api = axios.create({
 api.interceptors.response.use(
   (response) => response,
   (error: AxiosError) => {
-    // Navigate to the login route when authentication failed
-    if (error.response?.status === 401) {
-      window.location.href = "/auth";
-    }
+    // // Navigate to the login route when authentication failed
+    // if (error.response?.status === 401) {
+    //   window.location.href = "/auth";
+    // }
     return Promise.reject(error);
   }
 );
